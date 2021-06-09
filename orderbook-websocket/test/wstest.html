@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>ordertransaction</title>
+</head>
+<body>
+<h1>ordertransaction result:</h1>
+<script type="text/javascript">
+    // 1
+    let wsSocket = new WebSocket("ws://localhost:9082/v1/cryptotrading/wsorderbook")
+    let today = new Date();
+    // 2
+    let update = function () {
+        wsSocket.onmessage = function (event) {
+            console.log(JSON.parse(event.data)["id"]);
+        }
+        wsSocket.onopen = function (event) {
+            let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            let dateTime = date + ' ' + time;
+            wsSocket.send("ETH-BTC");
+        }
+    };
+    window.setTimeout(update);
+</script>
+</body>
+</html>

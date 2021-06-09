@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>orderbook</title>
+</head>
+<body>
+<h1>orderbook result:</h1>
+<script type="text/javascript">
+    // 1
+    let wsSocket = new WebSocket("ws://localhost:8080/v1/api/wsorders")
+    let today = new Date();
+    // 2
+    let update = function () {
+        wsSocket.onmessage = function (event) {
+            console.log(JSON.parse(event.data)["id"]);
+        }
+        wsSocket.onopen = function (event) {
+            const message = {
+                channel: "WS_EVENT_PUBLIC_ORDER_BOOK",
+                message: "OPEN"
+            }
+            wsSocket.send(JSON.stringify(message));
+        }
+    };
+    window.setTimeout(update);
+</script>
+</body>
+</html>

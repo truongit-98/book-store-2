@@ -1,0 +1,1372 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1/api/
+paths:
+  /account/admins/:
+    get:
+      tags:
+      - account/admins
+      description: get roles
+      operationId: AdminController.GetAdmins
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: query
+        name: pos
+        description: Position
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: Count
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /account/admins/author-info:
+    get:
+      tags:
+      - account/admins
+      description: get roles
+      operationId: AdminController.GetAdmins
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /account/admins/create:
+    post:
+      tags:
+      - account/admins
+      description: register admin
+      operationId: AdminController.RegisterAdmin
+      parameters:
+      - in: header
+        name: token
+        description: token
+        schema:
+          $ref: '#/definitions/true'
+      - in: body
+        name: admin
+        description: Admin
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.AdminRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /account/admins/login:
+    post:
+      tags:
+      - account/admins
+      description: register admin
+      operationId: AdminController.RegisterAdmin
+      parameters:
+      - in: header
+        name: token
+        description: token
+        schema:
+          $ref: '#/definitions/true'
+      - in: body
+        name: admin
+        description: Admin
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.AccountLoginRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /account/admins/update:
+    put:
+      tags:
+      - account/admins
+      description: register admin
+      operationId: AdminController.update
+      parameters:
+      - in: header
+        name: token
+        description: token
+        schema:
+          $ref: '#/definitions/true'
+      - in: body
+        name: admin
+        description: Admin
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.AccountPutRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /account/customer/:
+    get:
+      tags:
+      - account/customer
+      description: GetCustomers
+      operationId: CustomerController.GetCustomers
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: query
+        name: pos
+        description: Position
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: Count
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /account/customer/detail/{userId}:
+    get:
+      tags:
+      - account/customer
+      description: GetCustomers
+      operationId: CustomerController.GetCustomers
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: userId
+        description: userId
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /account/customer/login:
+    post:
+      tags:
+      - account/customer
+      description: register admin
+      operationId: CustomerController.RegisterAdmin
+      parameters:
+      - in: header
+        name: token
+        description: token
+        schema:
+          $ref: '#/definitions/true'
+      - in: body
+        name: admin
+        description: Admin
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.AccountLoginRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /account/customer/register:
+    post:
+      tags:
+      - account/customer
+      description: register admin
+      operationId: CustomerController.RegisterAdmin
+      parameters:
+      - in: header
+        name: token
+        description: token
+        schema:
+          $ref: '#/definitions/true'
+      - in: body
+        name: admin
+        description: Admin
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.AccountRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /account/customer/search:
+    get:
+      tags:
+      - account/customer
+      description: GetCustomers
+      operationId: CustomerController.GetCustomers
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: query
+        name: q
+        description: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/author-controls/:
+    get:
+      tags:
+      - authorization/author-controls
+      description: get controls
+      operationId: AuthorControlController.GetControls
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: query
+        name: pos
+        description: Position
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: Count
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/author-controls/create:
+    post:
+      tags:
+      - authorization/author-controls
+      description: create new role by token
+      operationId: AuthorControlController.CreateNewControl
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: role
+        description: Role
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.AuthorControlRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/author-controls/delete/{controlId}:
+    delete:
+      tags:
+      - authorization/author-controls
+      description: update control by token
+      operationId: AuthorControlController.RemoveControl
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: controlId
+        description: body
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/author-controls/update:
+    put:
+      tags:
+      - authorization/author-controls
+      description: update control by token
+      operationId: AuthorControlController.UpdateControl
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.AuthorControlPutRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/permissions/:
+    get:
+      tags:
+      - authorization/permissions
+      description: get permissions
+      operationId: PermissionController.GetPermissions
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: query
+        name: pos
+        description: Position
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: Count
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/permissions/create:
+    post:
+      tags:
+      - authorization/permissions
+      description: create new permission by token
+      operationId: PermissionController.CreatPermission
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: permission
+        description: Permission
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.PermissionRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/permissions/delete/{id}:
+    delete:
+      tags:
+      - authorization/permissions
+      description: remove permission
+      operationId: PermissionController.RemovePermission
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: permissionID
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/permissions/role/{roleId}:
+    get:
+      tags:
+      - authorization/permissions
+      description: get permissions for role
+      operationId: PermissionController.GetPermissionsForRole
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: roleId
+        description: role
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/permissions/update:
+    put:
+      tags:
+      - authorization/permissions
+      description: update a permission
+      operationId: PermissionController.UpdatePermission
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.PermissionPutRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/role-permission-controls/all:
+    get:
+      tags:
+      - authorization/role-permission-controls
+      description: Get All RolePermControls
+      operationId: RolePermsControlController.GetAllRolePermControls
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/role-permissions/:
+    get:
+      tags:
+      - authorization/role-permissions
+      description: get role_permissions
+      operationId: RolePermissionController.GetRolePermissions
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/role-permissions/create/multi:
+    post:
+      tags:
+      - authorization/role-permissions
+      description: add permission for role
+      operationId: RolePermissionController.AddMultiPermissionToRole
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.MultiRolePermissionRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/role-user/all:
+    get:
+      tags:
+      - authorization/role-user
+      description: get role_permissions
+      operationId: RoleUserController.GetRoleUsers
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/role-user/multi:
+    post:
+      tags:
+      - authorization/role-user
+      description: Add role for user
+      operationId: RoleUserController.AddRoleForUser
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.MultiRoleUserRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/role-user/user/{userId}:
+    get:
+      tags:
+      - authorization/role-user
+      description: get role_permissions
+      operationId: RoleUserController.GetRoleUsers
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: userId
+        description: UserID
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/roles/:
+    get:
+      tags:
+      - authorization/roles
+      description: get roles
+      operationId: RoleController.GetRoles
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: query
+        name: pos
+        description: Position
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: Count
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /authorization/roles/create:
+    post:
+      tags:
+      - authorization/roles
+      description: create new role by token
+      operationId: RoleController.CreateRole
+      parameters:
+      - in: header
+        name: token
+        description: token
+        schema:
+          $ref: '#/definitions/true'
+      - in: body
+        name: role
+        description: Role
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.RoleRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/roles/delete/{roleId}:
+    delete:
+      tags:
+      - authorization/roles
+      description: remove role by  id
+      operationId: RoleController.Removerole
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: roleId
+        description: roleId
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/roles/detail/{roleId}:
+    get:
+      tags:
+      - authorization/roles
+      description: get roles by  id
+      operationId: RoleController.GetRolesById
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: roleId
+        description: roleId
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/roles/update:
+    put:
+      tags:
+      - authorization/roles
+      description: update a role
+      operationId: RoleController.UpdateRole
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.RolePutRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /authorization/roles/user/{userId}:
+    get:
+      tags:
+      - authorization/roles
+      description: get roles for user
+      operationId: RoleController.GetRolesForUser
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: userId
+        description: UserID
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /books/create-book:
+    post:
+      tags:
+      - books
+      description: create new book
+      operationId: BookController.CreateNewBook
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.BookPostRequestBody'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /books/create-book-detail:
+    post:
+      tags:
+      - books
+      description: create new book detail
+      operationId: BookController.CreateNewBookDetail
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.BookDetailPostRequestBody'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /books/create-book-type:
+    post:
+      tags:
+      - books
+      description: create new book type
+      operationId: BookController.CreateNewBookType
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Body
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.BookTypePostRequestBody'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /books/featured:
+    get:
+      tags:
+      - books
+      description: get featured producs
+      operationId: BookController.GetFeatureadProducts
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /books/filter:
+    get:
+      tags:
+      - books
+      description: get products with filter
+      operationId: BookController.GetProductsWithFilter
+      parameters:
+      - in: query
+        name: category
+        description: Category
+        type: integer
+        format: int32
+      - in: query
+        name: topic
+        description: Topic
+        type: integer
+        format: int32
+      - in: query
+        name: priceMin
+        description: PriceMin
+        type: number
+        format: double
+      - in: query
+        name: priceMax
+        description: PriceMax
+        type: number
+        format: double
+      - in: query
+        name: manufacturer
+        description: Manufacturers
+        type: integer
+        format: int32
+      - in: query
+        name: sort
+        description: Sorted
+        type: string
+      - in: query
+        name: offset
+        description: Offset
+        type: integer
+        format: int32
+      - in: query
+        name: limit
+        description: Limit
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /books/info/{id}:
+    get:
+      tags:
+      - books
+      description: get info book of id
+      operationId: BookController.GetInfoBook
+      parameters:
+      - in: path
+        name: id
+        description: ProductID
+        required: true
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /books/new:
+    get:
+      tags:
+      - books
+      description: get new products
+      operationId: BookController.GetNewProducts
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /books/seller:
+    get:
+      tags:
+      - books
+      description: get best seller products
+      operationId: BookController.GetBestSellerProducts
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /categories/with-book-count:
+    get:
+      tags:
+      - categories
+      description: get categories
+      operationId: CategoryController.GetCategories
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /common/administrative/districts/{cityId}:
+    get:
+      tags:
+      - common
+      description: Get District of city
+      operationId: CommonController.GetDistrict
+      parameters:
+      - in: path
+        name: cityId
+        description: CityID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/data.District'
+  /common/administrative/wards/{districtId}:
+    get:
+      tags:
+      - common
+      description: GetWards of district
+      operationId: CommonController.GetWards
+      parameters:
+      - in: path
+        name: districtId
+        description: districtId
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/data.District'
+  /orders/checkout:
+    post:
+      tags:
+      - orders
+      description: checkout order
+      operationId: OrderController.OrderCheckout
+      parameters:
+      - in: header
+        name: token
+        description: token
+        schema:
+          $ref: '#/definitions/true'
+      - in: body
+        name: body
+        description: OrderInfo
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.OrderInformation'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonSingle'
+  /orders/history:
+    get:
+      tags:
+      - orders
+      description: order history
+      operationId: OrderController.OrderHistory
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: query
+        name: status
+        description: Status
+        type: integer
+        format: int32
+      - in: query
+        name: start
+        description: start
+        type: integer
+        format: int32
+      - in: query
+        name: end
+        description: end
+        type: integer
+        format: int32
+      - in: query
+        name: offset
+        description: offset
+        type: integer
+        format: int32
+      - in: query
+        name: limit
+        description: limit
+        type: integer
+        format: int32
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /payments/:
+    get:
+      tags:
+      - payments
+      description: get Payment
+      operationId: PaymentController.GetPayment
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /publishers/with-book-count:
+    get:
+      tags:
+      - publishers
+      description: get publishers
+      operationId: PublisherController.GetPublishers
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /vouchers/:
+    get:
+      tags:
+      - vouchers
+      description: GetVouchers
+      operationId: VoucherController.GetVouchers
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+  /wsorders/:
+    get:
+      tags:
+      - wsorders
+      description: Get Websocket Orderbook
+      operationId: OrderbookWSController.Get Websocket Orderbook
+      parameters:
+      - in: body
+        name: params
+        description: description
+        required: true
+        schema:
+          $ref: '#/definitions/requestbody.WSBodyRequest'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/responses.ResponseCommonArray'
+        "404":
+          description: nothing here
+definitions:
+  3415.0xc000721b90.false:
+    title: "false"
+    type: object
+  3689.0xc000721cb0.false:
+    title: "false"
+    type: object
+  data.District:
+    title: District
+    type: object
+  requestbody.AccountLoginRequest:
+    title: AccountLoginRequest
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+  requestbody.AccountPutRequest:
+    title: AccountPutRequest
+    type: object
+    properties:
+      address:
+        type: string
+      full_name:
+        type: string
+      id:
+        type: integer
+        format: int32
+      phone:
+        type: string
+  requestbody.AccountRequest:
+    title: AccountRequest
+    type: object
+    properties:
+      address:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+  requestbody.AdminRequest:
+    title: AdminRequest
+    type: object
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      phone:
+        type: string
+  requestbody.AuthorControlPutRequest:
+    title: AuthorControlPutRequest
+    type: object
+    properties:
+      action:
+        type: string
+      active:
+        type: boolean
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+  requestbody.AuthorControlRequest:
+    title: AuthorControlRequest
+    type: object
+    properties:
+      action:
+        type: string
+      active:
+        type: boolean
+      name:
+        type: string
+  requestbody.BookDetailPostRequestBody:
+    title: BookDetailPostRequestBody
+    type: object
+    properties:
+      book_type_id:
+        type: integer
+        format: int32
+      description:
+        type: string
+      format_id:
+        type: integer
+        format: int32
+      height:
+        type: number
+        format: double
+      language:
+        type: string
+      number_of_page:
+        type: integer
+        format: int64
+      price_cover:
+        type: number
+        format: double
+      publisher_id:
+        type: integer
+        format: int32
+      topic_id:
+        type: integer
+        format: int32
+      width:
+        type: number
+        format: double
+  requestbody.BookPostRequestBody:
+    title: BookPostRequestBody
+    type: object
+    properties:
+      amount:
+        type: integer
+        format: int32
+      book_type_id:
+        type: integer
+        format: int32
+      cover_image:
+        type: string
+      isbn:
+        type: string
+      sku:
+        type: string
+      title:
+        type: string
+  requestbody.BookTypePostRequestBody:
+    title: BookTypePostRequestBody
+    type: object
+    properties:
+      book_type:
+        type: integer
+        format: int64
+      episodes:
+        type: integer
+        format: int64
+      type_name:
+        type: string
+  requestbody.MultiRolePermissionRequest:
+    title: MultiRolePermissionRequest
+    type: object
+    properties:
+      permissions:
+        type: array
+        items:
+          $ref: '#/definitions/requestbody.permission'
+      role_id:
+        type: integer
+        format: int32
+  requestbody.MultiRoleUserRequest:
+    title: MultiRoleUserRequest
+    type: object
+    properties:
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/requestbody.role'
+      user_id:
+        type: integer
+        format: int32
+  requestbody.OrderInformation:
+    title: OrderInformation
+    type: object
+    properties:
+      coupon:
+        type: string
+      orders:
+        type: array
+        items:
+          $ref: '#/definitions/requestbody.order'
+      payment_method:
+        type: integer
+        format: int32
+      receive_info:
+        $ref: '#/definitions/requestbody.receiveInfo'
+  requestbody.PermissionPutRequest:
+    title: PermissionPutRequest
+    type: object
+    properties:
+      active:
+        type: boolean
+      name:
+        type: string
+      path:
+        type: string
+      permission_id:
+        type: integer
+        format: int32
+  requestbody.PermissionRequest:
+    title: PermissionRequest
+    type: object
+    properties:
+      active:
+        type: boolean
+      name:
+        type: string
+      path:
+        type: string
+  requestbody.RolePutRequest:
+    title: RolePutRequest
+    type: object
+    properties:
+      active:
+        type: boolean
+      name:
+        type: string
+      role_id:
+        type: integer
+        format: int32
+  requestbody.RoleRequest:
+    title: RoleRequest
+    type: object
+    properties:
+      active:
+        type: boolean
+      name:
+        type: string
+  requestbody.WSBodyRequest:
+    title: WSBodyRequest
+    type: object
+    properties:
+      channel:
+        type: string
+      message:
+        type: string
+  requestbody.control:
+    title: control
+    type: object
+    properties:
+      active:
+        type: boolean
+      control_id:
+        type: integer
+        format: int32
+  requestbody.order:
+    title: order
+    type: object
+    properties:
+      amount:
+        type: integer
+        format: int64
+      price:
+        type: number
+        format: double
+      product_id:
+        type: integer
+        format: int64
+  requestbody.permission:
+    title: permission
+    type: object
+    properties:
+      controls:
+        type: array
+        items:
+          $ref: '#/definitions/requestbody.control'
+      permission_id:
+        type: integer
+        format: int32
+  requestbody.receiveInfo:
+    title: receiveInfo
+    type: object
+    properties:
+      address_detail:
+        type: string
+      city_id:
+        type: string
+      district_id:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      phone:
+        type: string
+      ward_id:
+        type: string
+  requestbody.role:
+    title: role
+    type: object
+    properties:
+      active:
+        type: boolean
+      role_id:
+        type: integer
+        format: int32
+  responses.Err:
+    title: Err
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int64
+      message:
+        type: string
+  responses.ResponseCommonArray:
+    title: ResponseCommonArray
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/3689.0xc000721cb0.false'
+      error:
+        $ref: '#/definitions/responses.Err'
+      total_count:
+        type: integer
+        format: int32
+  responses.ResponseCommonSingle:
+    title: ResponseCommonSingle
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/3415.0xc000721b90.false'
+      error:
+        $ref: '#/definitions/responses.Err'
+  "true":
+    title: "true"
+    type: object
